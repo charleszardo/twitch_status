@@ -2,8 +2,16 @@ var usernames = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCa
 var baseUrl = "https://api.twitch.tv/kraken/streams/";
 var cb = "?callback=?";
 
-usernames.forEach(function(name) {
-	$.getJSON(baseUrl + name + cb, function(data) {
-	  console.log(data);
+$(document).ready(function(){
+	usernames.forEach(function(name) {
+		$.getJSON(baseUrl + name + cb, function(data) {
+			var status = "offline";
+			if (data.stream) {
+				status = "online";
+			}
+		  $("#channels").prepend('<div class="user ' + status + '">' + name + '</div>');
+		});
 	});
+	
+	
 })
