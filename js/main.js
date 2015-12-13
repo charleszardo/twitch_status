@@ -13,5 +13,17 @@ $(document).ready(function(){
 		});
 	});
 	
+	$("#all").click(function(){
+		$(".user").show();
+	});
 	
+	$("#online").click(function(){
+		$(".online").show();
+		$(".offline").hide();
+	});
+	
+	$("#offline").click(function(){
+		$(".offline").show();
+		$(".online").hide();
+	});
 })
