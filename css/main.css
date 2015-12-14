@@ -11,3 +11,11 @@ nav > div {
 	width: 50px;
 	border-radius: 50%;
 }
+
+.icon-on {
+	color: green;
+}
+
+.icon-off {
+	color: red;
+}

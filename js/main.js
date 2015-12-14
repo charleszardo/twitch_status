@@ -7,14 +7,14 @@ $(document).ready(function(){
 		var userObj = {};
 		userObj.status = "offline";
 		userObj.summary = null;
-		userObj.icon = '<div class="icon">!</div>';
+		userObj.icon = '<div class="icon-off">!</div>';
 		$.getJSON(baseUrl + "streams/" + username + cb, function(data) {
 			return data;
 		}).done(function(data){
 			if (data.stream) {
 				userObj.status = "online";
 				userObj.summary = data.stream.channel.status;
-				userObj.icon = '<div class="icon online">&#10003</div>';
+				userObj.icon = '<div class="icon-on">&#10003</div>';
 			}
 			
 			$.getJSON(baseUrl + 'users/' + username + cb, function(data) {
