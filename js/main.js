@@ -14,6 +14,9 @@ $(document).ready(function(){
 		
 		$.getJSON(baseUrl + 'users/' + username + cb, function(data) {
 			console.log(data);
+			if (!data.logo) {
+				data.logo = "http://placehold.it/50x50";
+			}
 			userObj.photo = data.logo;
 		}).done(function(){
 			$("#channels").prepend('<div class="user ' + userObj.status + '">' + 

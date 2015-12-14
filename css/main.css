@@ -1,3 +1,13 @@
 nav > div {
 	display: inline-block;
 }
+
+.user div {
+	display: inline-block;
+}
+
+.logo {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
