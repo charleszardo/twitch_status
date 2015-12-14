@@ -1,25 +1,26 @@
 var usernames = ["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff"];
-var baseUrl = "https://api.twitch.tv/kraken/streams/";
+var baseUrl = "https://api.twitch.tv/kraken/";
 var cb = "?client_id=566e055ff2217f3607bea86b&callback=?"
 
 $(document).ready(function(){
-	usernames.forEach(function(name) {
-		$.getJSON(baseUrl + name + cb, function(data) {
-			var status = "offline";
+	usernames.forEach(function(username) {
+		userObj = {};
+		userObj.status = "offline";
+		$.getJSON(baseUrl + "streams/" + username + cb, function(data) {
 			if (data.stream) {
-				status = "online";
+				userObj.status = "online";
 			}
-		  $("#channels").prepend('<div class="user ' + status + '">' + name + '</div>');
+		  
 		});
 		
 		$.getJSON(baseUrl + 'users/' + name + cb, function(data) {
 			console.log(data);
-			// var status = "offline";
-			// if (data.stream) {
-			// 	status = "online";
-			// }
-			// 		  $("#channels").prepend('<div class="user ' + status + '">' + name + '</div>');
 		});
+		
+		$("#channels").prepend('<div class="user ' + userObj.status + '">' + 
+		'<a href="http://www.twitch.tv/' + username +'">' + username + '</a>' +
+		'</div>'
+		);
 	});
 	
 	$("#all").click(function(){
