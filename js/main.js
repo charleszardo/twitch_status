@@ -33,10 +33,6 @@ $(document).ready(function(){
 				);
 			});
 		});
-		
-
-		
-
 	});
 	
 	$("#all").click(function(){
