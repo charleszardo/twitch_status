@@ -61,7 +61,6 @@ $(document).ready(function(){
 		usernames[username].summary = data.stream.channel.status;
 		var $userEl = $("#" + username);
 		var summary = usernames[username].summary;
-		console.log(summary);
 		$userEl.removeClass("offline");
 		$userEl.addClass("online");
 		$userEl.find(".icon").html("&#10003");
@@ -71,7 +70,6 @@ $(document).ready(function(){
 	}
 	
 	function userOff(username) {
-		console.log(username);
 		usernames[username].summary = null;
 		var $userEl = $("#" + username);
 		$userEl.removeClass("online");
@@ -82,37 +80,8 @@ $(document).ready(function(){
 		$userEl.find(".current-stream").html("");
 	}
 	
-	function updateUserEl(username) {
-		
-	}
-	
-	function updateStatus(username) {
-		Object.keys(usernames).forEach(function(username) {
-			if (usernames[username]) {
-				usernames[username] = true;
-				
-			} else {
-				
-			}
-		});
-	}
-	
-	// Object.keys(usernames).forEach(function(username) {
-	//
-	// 	$.getJSON(baseUrl + "streams/" + username + cb, function(data) {
-	// 		return data;
-	// 	}).done(function(data){
-	// 		if (data.stream) {
-	// 			usernames[username].icon = '<div class="icon-on">&#10003</div>';
-	// 		}
-	// 	});
-	//
-	//
-	// });
-	
 	setup();
 	setInterval(checkStatus, 2000);
-	//setInterval(updateStatus, 1000);
 	
 	$("#all").click(function(){
 		$(".online").children().show();
