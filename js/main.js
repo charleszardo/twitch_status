@@ -1,14 +1,14 @@
 var usernames = {
-	"brunofin": false,
-	"medrybw": false,
-	"freecodecamp": false,
-	"storbeck": false,
-	"terakilobyte": false,
-	"habathcx": false,
-	"RobotCaleb": false,
-	"thomasballinger": false,
-	"noobs2ninjas": false,
-	"beohoff": false
+	"brunofin": { prev: null, current: false},
+	"medrybw": { prev: null, current: false},
+	"freecodecamp": { prev: null, current: false},
+	"storbeck": { prev: null, current: false},
+	"terakilobyte": { prev: null, current: false},
+	"habathcx": { prev: null, current: false},
+	"RobotCaleb": { prev: null, current: false},
+	"thomasballinger": { prev: null, current: false},
+	"noobs2ninjas": { prev: null, current: false},
+	"beohoff": { prev: null, current: false}
 };
 
 var baseUrl = "https://api.twitch.tv/kraken/";
@@ -35,19 +35,30 @@ $(document).ready(function(){
 		usernames[username] = on;
 	}
 	
+	function updateStatus() {
+		Object.keys(usernames).forEach(function(username) {
+			if (usernames[username]) {
+				usernames[username] = true;
+				
+			} else {
+				
+			}
+		});
+	}
+	
 	Object.keys(usernames).forEach(function(username) {
-		var userObj = {};
-		userObj.status = "offline";
-		userObj.summary = null;
-		userObj.icon = '<div class="icon-off">!</div>';
+		var userObj = usernames[username];
+		usernames[username].status = "offline";
+		usernames[username].summary = null;
+		usernames[username].icon = '<div class="icon-off">!</div>';
 		$.getJSON(baseUrl + "streams/" + username + cb, function(data) {
 			return data;
 		}).done(function(data){
 			if (data.stream) {
-				usernames[username] = true;
-				userObj.status = "online";
-				userObj.summary = data.stream.channel.status;
-				userObj.icon = '<div class="icon-on">&#10003</div>';
+				usernames[username].current = true;
+				usernames[username].status = "online";
+				usernames[username].summary = data.stream.channel.status;
+				usernames[username].icon = '<div class="icon-on">&#10003</div>';
 			}
 			
 			$.getJSON(baseUrl + 'users/' + username + cb, function(data) {
@@ -56,22 +67,22 @@ $(document).ready(function(){
 				if (!data.logo) {
 					data.logo = "http://placehold.it/50x50";
 				}
-				userObj.photo = data.logo;
-				userObj.display = data.display_name;
+				usernames[username].photo = data.logo;
+				usernames[username].display = data.display_name;
 			
-				$("#channels").prepend('<div id="' + username + '" class="user ' + userObj.status + '">' + 
+				$("#channels").prepend('<div id="' + username + '" class="user ' + usernames[username].status + '">' + 
 				'<a href="http://www.twitch.tv/' + username +'">' + 
-					'<div class="picture"><img class="logo" src="' + userObj.photo + '"' + '</div>' +
-					'<div class="username">' + userObj.display + '</div>' +
+					'<div class="picture"><img class="logo" src="' + usernames[username].photo + '"' + '</div>' +
+					'<div class="username">' + usernames[username].display + '</div>' +
 					'<div class="current-stream">' + '</div>' +
-					userObj.icon +
+					usernames[username].icon +
 				'</a></div>'
 				);
 			});
 		});
 		
-		setInterval(checkStatus, 1000);
-		setInterval(updateStatus, 1000);
+		setInterval(checkStatus, 2000);
+		//setInterval(updateStatus, 1000);
 	});
 	
 	$("#all").click(function(){
