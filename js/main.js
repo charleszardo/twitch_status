@@ -1,5 +1,6 @@
 var baseUrl = "https://api.twitch.tv/kraken/";
-var cb = "?client_id=566e055ff2217f3607bea86b&callback=?"
+var cb = "?client_id=566e055ff2217f3607bea86b&callback=?";
+var currentSelection = "all";
 
 var usernames = {
 	"brunofin": {status: false, summary: null},
@@ -48,10 +49,12 @@ $(document).ready(function(){
 					// user has signed on
 					usernames[username].status = true;
 					userOn(username, data);
+					updateListDisplay();
 				} else if (!data.stream && usernames[username].status) {
 					// user has signed off
 					usernames[username].status = false;
 					userOff(username, data);
+					updateListDisplay();
 				}
 			});
 		})
@@ -80,21 +83,34 @@ $(document).ready(function(){
 		$userEl.find(".current-stream").html("");
 	}
 	
+	function updateListDisplay() {
+		if (currentSelection === "online") {
+			$(".online").children().show();
+			$(".offline").children().hide();
+		} else if (currentSelection === "offline") {
+			$(".offline").children().show();
+			$(".online").children().hide();
+		} else {
+			$(".online").children().show();
+			$(".offline").children().show();
+		}
+	}
+	
 	setup();
 	setInterval(checkStatus, 2000);
 	
 	$("#all").click(function(){
-		$(".online").children().show();
-		$(".offline").children().show();
+		currentSelection = "all";
+		updateListDisplay()
 	});
 	
 	$("#online").click(function(){
-		$(".online").children().show();
-		$(".offline").children().hide();
+		currentSelection = "online";
+		updateListDisplay()
 	});
 	
 	$("#offline").click(function(){
-		$(".offline").children().show();
-		$(".online").children().hide();
+		currentSelection = "offline";
+		updateListDisplay()
 	});
 })
