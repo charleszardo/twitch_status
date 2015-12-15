@@ -28,10 +28,10 @@ $(document).ready(function(){
 			
 				$("#channels").prepend('<div id="' + username + '" class="user offline">' + 
 				'<a href="http://www.twitch.tv/' + username +'">' + 
-					'<div class="picture"><img class="logo" src="' + usernames[username].photo + '"' + '</div>' +
-					'<div class="username">' + usernames[username].display + '</div>' +
-					'<div class="current-stream">' + '</div>' +
-					'<div class="icon icon-off">!</div>' +
+					'<span class="picture"><img class="logo" src="' + usernames[username].photo + '">' + '</span>' +
+					'<span class="username">' + usernames[username].display + '</span>' +
+					'<span class="current-stream">' + '</span>' +
+					'<span class="icon icon-off">!</span>' +
 				'</a></div>'
 				);
 			});
@@ -45,7 +45,6 @@ $(document).ready(function(){
 				return data;
 			}).done(function(data){
 				if (data.stream && !usernames[username].status) {
-					console.log(username);
 					// user has signed on
 					usernames[username].status = true;
 					userOn(username, data);
@@ -61,15 +60,26 @@ $(document).ready(function(){
 	function userOn(username, data) {
 		usernames[username].summary = data.stream.channel.status;
 		var $userEl = $("#" + username);
+		var summary = usernames[username].summary;
+		console.log(summary);
 		$userEl.removeClass("offline");
 		$userEl.addClass("online");
+		$userEl.find(".icon").html("&#10003");
+		$userEl.find(".icon").addClass("icon-on");
+		$userEl.find(".icon").removeClass("icon-off");
+		$userEl.find(".current-stream").html(summary);
 	}
 	
 	function userOff(username) {
+		console.log(username);
 		usernames[username].summary = null;
 		var $userEl = $("#" + username);
 		$userEl.removeClass("online");
 		$userEl.addClass("offline");
+		$userEl.find(".icon").html("!");
+		$userEl.find(".icon").addClass("icon-off");
+		$userEl.find(".icon").removeClass("icon-on");
+		$userEl.find(".current-stream").html("");
 	}
 	
 	function updateUserEl(username) {
