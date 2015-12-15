@@ -96,6 +96,10 @@ $(document).ready(function(){
 		}
 	}
 	
+	function filter() {
+		
+	}
+	
 	setup();
 	setInterval(checkStatus, 2000);
 	
@@ -113,4 +117,12 @@ $(document).ready(function(){
 		currentSelection = "offline";
 		updateListDisplay()
 	});
+	
+	if ($("#search-box").length > 0 ) {
+	  $('#search-box').keyup(function() {
+	      console.log($(this).val());
+	  });
+	}
+	
+	
 })
