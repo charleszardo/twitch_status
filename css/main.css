@@ -1,9 +1,65 @@
-nav > div {
+body {
+	background: #F79F94;
+}
+
+#twitch {
+	background: #FFFFFF;
+	margin: 0 auto;
+	text-align: center;
+	width: 300px;
+	border: 1px solid #F47564;
+}
+
+#channels {
+	text-align: left;
+	border-top: 1px solid #E4E0E1;
+}
+
+#search {
+	padding: 10px;
+}
+
+#search-box {
+	position: relative;
+  width: 70%;
+  text-align: left;
+  line-height: 20px;
+  border-radius: 20px;
+  border: 1px solid #E4E0E1;
+  outline: none;
+  padding-left: 40px;
+  padding-right: 20px;
+  font-size: .8em;
+  font-family: Roboto, Arial, Sans-Serif;
+}
+
+.user {
+	padding: 10px;
+}
+
+.username-stream {
 	display: inline-block;
 }
 
-.user div {
+.username-stream > span {
+	display: block;
+}
+
+nav {
+	width: 100%;
+	background: #F47564;
+	color: #FFF;
+}
+
+.nav-item  {
 	display: inline-block;
+	width: 25%;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.nav-item:not(:last-child) {
+	border-right: 1px solid #FFF;
 }
 
 .logo {

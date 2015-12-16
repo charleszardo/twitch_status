@@ -37,8 +37,9 @@ $(document).ready(function(){
 				$("#channels").prepend('<div id="' + username + '" class="user offline in">' + 
 				'<a href="http://www.twitch.tv/' + username +'">' + 
 					'<span class="picture"><img class="logo" src="' + usernames[username].photo + '">' + '</span>' +
+					'<div class="username-stream">' +
 					'<span class="username">' + usernames[username].display + '</span>' +
-					'<span class="current-stream">' + '</span>' +
+					'<span class="current-stream">' + '</span>' + '</div>' +
 					'<span class="icon icon-off">!</span>' +
 				'</a></div>'
 				);
