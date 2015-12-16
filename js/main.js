@@ -110,12 +110,9 @@ $(document).ready(function(){
 		if (currentSelection === "online") {
 			$(".user").children().hide();
 			$(".online.in").children().show();
-			// $(".offline").children().hide();
-			// $('.out').children().hide();
 		} else if (currentSelection === "offline") {
 			$(".user").children().hide();
 			$(".offline.in").children().show();
-			// $(".online").children().hide();
 		} else {
 			$(".user").children().hide();
 			$(".online.in").children().show();
