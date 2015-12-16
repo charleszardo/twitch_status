@@ -52,7 +52,12 @@ $(document).ready(function(){
 			$.getJSON(baseUrl + "streams/" + username + cb, function(data) {
 				return data;
 			}).done(function(data){
-				if (data.stream && !usernames[username].status) {
+				if (data.status && data.status >= 400) {
+					// user no longer exists
+					usernames[username].status = false;
+					noUser(username, data);
+					updateListDisplay();
+				} else if (data.stream && !usernames[username].status) {
 					// user has signed on
 					usernames[username].status = true;
 					userOn(username, data);
@@ -79,7 +84,7 @@ $(document).ready(function(){
 		$userEl.find(".current-stream").html(summary);
 	}
 	
-	function userOff(username) {
+	function userOff(username, data) {
 		usernames[username].summary = null;
 		var $userEl = $("#" + username);
 		$userEl.removeClass("online");
@@ -88,6 +93,17 @@ $(document).ready(function(){
 		$userEl.find(".icon").addClass("icon-off");
 		$userEl.find(".icon").removeClass("icon-on");
 		$userEl.find(".current-stream").html("");
+	}
+	
+	function noUser(username, data) {
+		usernames[username].summary = null;
+		var $userEl = $("#" + username);
+		$userEl.removeClass("online");
+		$userEl.addClass("offline");
+		$userEl.find(".icon").html("x");
+		$userEl.find(".icon").addClass("no-icon");
+		$userEl.find(".icon").removeClass("icon-on");
+		$userEl.find(".current-stream").html("this user no longer exists");
 	}
 	
 	function updateListDisplay() {
