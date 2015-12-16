@@ -123,10 +123,10 @@ $(document).ready(function(){
 	
 	function filter() {
 		var searchString = ".username:contains('" + searchTerm + "')"
-		$(".username").parent().parent().removeClass("in");
-		$(".username").parent().parent().addClass("out");
-		$(searchString).parent().parent().removeClass("out");
-		$(searchString).parent().parent().addClass("in");
+		$(".username").parent().parent().parent().removeClass("in");
+		$(".username").parent().parent().parent().addClass("out");
+		$(searchString).parent().parent().parent().removeClass("out");
+		$(searchString).parent().parent().parent().addClass("in");
 	}
 	
 	setup();
