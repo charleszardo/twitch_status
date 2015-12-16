@@ -109,15 +109,15 @@ $(document).ready(function(){
 	
 	function updateListDisplay() {
 		if (currentSelection === "online") {
-			$(".user").children().hide();
-			$(".online.in").children().show();
+			$(".user").css("display", "none");
+			$(".online.in").css("display", "inline-block");
 		} else if (currentSelection === "offline") {
-			$(".user").children().hide();
-			$(".offline.in").children().show();
+			$(".user").css("display", "none");
+			$(".offline.in").css("display", "block");
 		} else {
-			$(".user").children().hide();
-			$(".online.in").children().show();
-			$(".offline.in").children().show();
+			$(".user").css("display", "none");
+			$(".online.in").css("display", "block");
+			$(".offline.in").css("display", "block");
 		}
 	}
 	
