@@ -110,7 +110,7 @@ $(document).ready(function(){
 	function updateListDisplay() {
 		if (currentSelection === "online") {
 			$(".user").css("display", "none");
-			$(".online.in").css("display", "inline-block");
+			$(".online.in").css("display", "block");
 		} else if (currentSelection === "offline") {
 			$(".user").css("display", "none");
 			$(".offline.in").css("display", "block");
