@@ -52,7 +52,7 @@ $(document).ready(function(){
 		Object.keys(usernames).forEach(function(username) {
 			$.getJSON(baseUrl + "streams/" + username + cb, function(data) {
 				return data;
-			}).done(function(data){
+			}).done(function(data) { 
 				if (data.status && data.status >= 400) {
 					// user no longer exists
 					usernames[username].status = false;
