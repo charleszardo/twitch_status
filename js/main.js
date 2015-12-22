@@ -35,9 +35,9 @@ $(document).ready(function(){
 				usernames[username].display = data.display_name;
 			
 				$("#channels").prepend(
-					'<div class="user-block">' +
+					'<div class="user-block in">' +
 					  '<a href="http://www.twitch.tv/' + username +'">' + 
-					    '<span id="' + username + '" class="user offline in">' + 
+					    '<span id="' + username + '" class="user offline">' + 
 					      '<span class="picture"><img class="logo" src="' + usernames[username].photo + '">' + '</span>' +
 								'<span class="username-stream">' +
 									'<div class="username">' + usernames[username].display + '</div>' +
@@ -112,7 +112,6 @@ $(document).ready(function(){
 	
 	function updateListDisplay(navItem) {
 		if (navItem) {
-			console.log(navItem);
 			$(".nav-item").removeClass("nav-active");
 			$(navItem).addClass("nav-active");
 		}
@@ -132,10 +131,12 @@ $(document).ready(function(){
 	
 	function filter() {
 		var searchString = ".username:contains('" + searchTerm + "')"
-		$(".username").parent().parent().parent().removeClass("in");
-		$(".username").parent().parent().parent().addClass("out");
-		$(searchString).parent().parent().parent().removeClass("out");
-		$(searchString).parent().parent().parent().addClass("in");
+		var n = $('.username')[0];
+		console.log($(n).parent().parent().parent().parent());
+		$(".username").parent().parent().parent().parent().removeClass("in");
+		$(".username").parent().parent().parent().parent().addClass("out");
+		$(searchString).parent().parent().parent().parent().removeClass("out");
+		$(searchString).parent().parent().parent().parent().addClass("in");
 	}
 	
 	setup();
