@@ -38,12 +38,12 @@ a:link, a:visited, a:hover, a:active {
   font-size: .8em;
 }
 
-.user {
+.user-block {
 	padding: 10px;
 }
 
 .username-stream {
-	width: 70%;
+	width: 60%;
 	display: inline-block;
 	margin-top: -100px;
 	margin-left: 10px;
@@ -84,6 +84,8 @@ nav {
 
 .icon {
 	font-weight: bold;
+	margin-left: 20px;
+	text-align: center;
 }
 
 .icon-on {
