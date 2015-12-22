@@ -48,14 +48,14 @@ body {
 nav {
 	width: 100%;
 	
-	background: #FF3333;
+	background: #F47564;
 	color: #FFF;
 }
 
 .nav-item  {
 	background: #F47564;
 	display: inline-block;
-	width: 26.44%;
+	width: 26.447%;
 	padding: 10px;
 	cursor: pointer;
 }
