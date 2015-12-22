@@ -107,7 +107,13 @@ $(document).ready(function(){
 		$userEl.find(".current-stream").html("this user no longer exists");
 	}
 	
-	function updateListDisplay() {
+	function updateListDisplay(navItem) {
+		if (navItem) {
+			console.log(navItem);
+			$(".nav-item").removeClass("nav-active");
+			$(navItem).addClass("nav-active");
+		}
+		
 		if (currentSelection === "online") {
 			$(".user").css("display", "none");
 			$(".online.in").css("display", "block");
@@ -134,17 +140,17 @@ $(document).ready(function(){
 	
 	$("#all").click(function(){
 		currentSelection = "all";
-		updateListDisplay();
+		updateListDisplay(this);
 	});
 	
 	$("#online").click(function(){
 		currentSelection = "online";
-		updateListDisplay();
+		updateListDisplay(this);
 	});
 	
 	$("#offline").click(function(){
 		currentSelection = "offline";
-		updateListDisplay();
+		updateListDisplay(this);
 	});
 	
 	if ($("#search-box").length > 0 ) {
