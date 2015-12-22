@@ -47,19 +47,25 @@ body {
 
 nav {
 	width: 100%;
-	background: #F47564;
+	
+	background: #FF3333;
 	color: #FFF;
 }
 
 .nav-item  {
+	background: #F47564;
 	display: inline-block;
-	width: 25%;
+	width: 26.44%;
 	padding: 10px;
 	cursor: pointer;
 }
 
 .nav-item:not(:last-child) {
 	border-right: 1px solid #FFF;
+}
+
+.nav-active {
+	background: #FF3333;
 }
 
 .logo {
