@@ -35,9 +35,9 @@ $(document).ready(function(){
 				usernames[username].display = data.display_name;
 			
 				$("#channels").prepend(
-					'<div class="user-block in">' +
+					'<div id="' + username + '" class="user-block offline in">' +
 					  '<a href="http://www.twitch.tv/' + username +'">' + 
-					    '<span id="' + username + '" class="user offline">' + 
+					    '<span class="user">' + 
 					      '<span class="picture"><img class="logo" src="' + usernames[username].photo + '">' + '</span>' +
 								'<span class="username-stream">' +
 									'<div class="username">' + usernames[username].display + '</div>' +
@@ -117,13 +117,13 @@ $(document).ready(function(){
 		}
 		
 		if (currentSelection === "online") {
-			$(".user").css("display", "none");
+			$(".user-block").css("display", "none");
 			$(".online.in").css("display", "block");
 		} else if (currentSelection === "offline") {
-			$(".user").css("display", "none");
+			$(".user-block").css("display", "none");
 			$(".offline.in").css("display", "block");
 		} else {
-			$(".user").css("display", "none");
+			$(".user-block").css("display", "none");
 			$(".online.in").css("display", "block");
 			$(".offline.in").css("display", "block");
 		}
@@ -132,7 +132,6 @@ $(document).ready(function(){
 	function filter() {
 		var searchString = ".username:contains('" + searchTerm + "')"
 		var n = $('.username')[0];
-		console.log($(n).parent().parent().parent().parent());
 		$(".username").parent().parent().parent().parent().removeClass("in");
 		$(".username").parent().parent().parent().parent().addClass("out");
 		$(searchString).parent().parent().parent().parent().removeClass("out");
