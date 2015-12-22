@@ -48,7 +48,8 @@ $(document).ready(function(){
 				);
 			});
 			
-		});
+			tinysort($(".user-block"));
+		})
 	}
 	
 	function checkStatus() {
@@ -127,6 +128,8 @@ $(document).ready(function(){
 			$(".online.in").css("display", "block");
 			$(".offline.in").css("display", "block");
 		}
+		
+		tinysort($(".user-block"));
 	}
 	
 	function filter() {
@@ -163,6 +166,4 @@ $(document).ready(function(){
 				updateListDisplay();
 	  });
 	}
-	
-	
 })
