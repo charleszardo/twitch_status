@@ -1,5 +1,11 @@
 body {
 	background: #F79F94;
+	font-family: 'Roboto', Arial, Sans-Serif;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: #F47564;
+		text-decoration: none;
 }
 
 #twitch {
@@ -30,7 +36,6 @@ body {
   padding-left: 40px;
   padding-right: 20px;
   font-size: .8em;
-  font-family: Roboto, Arial, Sans-Serif;
 }
 
 .user {
@@ -38,16 +43,19 @@ body {
 }
 
 .username-stream {
+	width: 70%;
 	display: inline-block;
+	margin-top: -100px;
+	margin-left: 10px;
 }
 
-.username-stream > span {
-	display: block;
+.current-stream {
+	font-size: 10px;
+	color: #B9BBD8;
 }
 
 nav {
 	width: 100%;
-	
 	background: #F47564;
 	color: #FFF;
 }
@@ -72,6 +80,10 @@ nav {
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
+}
+
+.icon {
+	font-weight: bold;
 }
 
 .icon-on {

@@ -34,14 +34,17 @@ $(document).ready(function(){
 				usernames[username].photo = data.logo;
 				usernames[username].display = data.display_name;
 			
-				$("#channels").prepend('<div id="' + username + '" class="user offline in">' + 
-				'<a href="http://www.twitch.tv/' + username +'">' + 
-					'<span class="picture"><img class="logo" src="' + usernames[username].photo + '">' + '</span>' +
-					'<div class="username-stream">' +
-					'<span class="username">' + usernames[username].display + '</span>' +
-					'<span class="current-stream">' + '</span>' + '</div>' +
-					'<span class="icon icon-off">!</span>' +
-				'</a></div>'
+				$("#channels").prepend(
+					'<div class="user-block">' +
+					  '<a href="http://www.twitch.tv/' + username +'">' + 
+					    '<span id="' + username + '" class="user offline in">' + 
+					      '<span class="picture"><img class="logo" src="' + usernames[username].photo + '">' + '</span>' +
+								'<span class="username-stream">' +
+									'<div class="username">' + usernames[username].display + '</div>' +
+									'<div class="current-stream">' + '</div>' +
+								'</span>' +
+								'<span class="icon icon-off">!</span>' +
+				 '</span></a></div>'
 				);
 			});
 			
